@@ -1,0 +1,89 @@
+{
+  "description": "ZIP files from a collection",
+  "label": "ZIP",
+  "category": "Misc",
+  "icon": {
+    "name": "FileZIPIcon",
+    "color": "Orange"
+  },
+  "options": [
+    {
+      "name": "collection",
+      "label": "Source collection",
+      "meta": {
+        "type": "Collection",
+        "validations": {
+          "required": true
+        }
+      }
+    },
+    {
+      "name": "propertyName",
+      "label": "Property (database)name",
+      "info": "Use the property database name in snake_case to assign the correct property name.",
+      "meta": {
+        "type": "Text",
+        "default": "property_name",
+        "validations": {
+          "required": true
+        }
+      }
+    },
+    {
+      "meta": {
+        "type": "Model",
+        "validations": {
+          "required": true
+        }
+      },
+      "name": "modelTarget",
+      "label": "Model to save file into"
+    },
+    {
+      "meta": {
+        "allowedKinds": ["FILE"],
+        "type": "Property",
+        "model": "modelTarget",
+        "validations": {
+          "required": true
+        }
+      },
+      "configuration": {
+        "dependsOn": [
+          {
+            "option": "modelTarget",
+            "action": "CLEAR"
+          }
+        ]
+      },
+      "name": "propertyTarget",
+      "label": "Property to save file into"
+    },
+    {
+      "name": "fileName",
+      "label": "Filename",
+      "meta": {
+        "type": "Text",
+        "default": "zip",
+        "validations": {
+          "required": true
+        }
+      }
+    },
+    {
+      "meta": {
+        "type": "Output",
+        "output": {
+          "type": "Text"
+        },
+        "validations": {
+          "required": true
+        }
+      },
+      "name": "reference",
+      "label": "As",
+      "info": "The file reference"
+    }
+  ],
+  "yields": "NONE"
+}
