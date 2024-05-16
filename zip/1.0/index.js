@@ -6,6 +6,24 @@ const snakeToCamel = (str) => {
   return str.replace(/[!]/g, "_");
 };
 
+const getUniqueFilename = (filename, filenames) => {
+  let count = 1;
+  let newFilename = filename;
+  while (filenames.includes(newFilename)) {
+    const dotIndex = filename.lastIndexOf(".");
+    if (dotIndex !== -1) {
+      newFilename = `${filename.slice(0, dotIndex)}_${count}${filename.slice(
+        dotIndex
+      )}`;
+    } else {
+      newFilename = `${filename}_${count}`;
+    }
+    count++;
+  }
+  filenames.push(newFilename);
+  return newFilename;
+};
+
 const zip = async ({
   modelTarget: { name: modelNameTarget },
   propertyTarget: [{ name: propertyNameTarget }],
@@ -13,6 +31,7 @@ const zip = async ({
   collection: { data: collection },
   fileName,
 }) => {
+  const uniqueFilenames = [];
   const formattedPropertyName = snakeToCamel(propertyName);
   const jsZip = new JSZip();
 
@@ -23,11 +42,14 @@ const zip = async ({
   const zipFileReferences = await Promise.all(
     filteredCollection.map(async (item) => {
       const { url, name } = item[formattedPropertyName];
-
+      const zipFilename = getUniqueFilename(name, uniqueFilenames);
       const response = await fetch(url);
       const arrayBuffer = new Uint8Array(response._blob.buffer);
 
-      return { fileName: name, file: arrayBuffer };
+      return {
+        fileName: zipFilename,
+        file: arrayBuffer,
+      };
     })
   );
 

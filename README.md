@@ -24,12 +24,12 @@ The target model is the model where the file will eventually be saved. The prope
 
 ### Filename:
 
-    ![](https://raw.githubusercontent.com/Betty-Services/zip-action-function/main/img/filename.png)
+![alt text](https://raw.githubusercontent.com/Betty-Services/zip-action-function/main/img/filename.png)
 
 The Filename of the ZIP file
 
 ### As:
 
-    ![As](https://raw.githubusercontent.com/Betty-Services/zip-action-function/main/img/as.png)
+![alt text](https://raw.githubusercontent.com/Betty-Services/zip-action-function/main/img/as.png)
 
 The output variable name, which you can be used to save the ZIP file in a update or create step.
