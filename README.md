@@ -30,6 +30,6 @@ The Filename of the ZIP file
 
 ### As:
 
-    ![As](https://raw.githubusercontent.com/Betty-Services/zip-action-function/main/img/as.png)
+![As](https://raw.githubusercontent.com/Betty-Services/zip-action-function/main/img/as.png)
 
 The output variable name, which you can be used to save the ZIP file in a update or create step.
