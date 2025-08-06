@@ -1,0 +1,69 @@
+{
+  "description": "UNZIP file from a property",
+  "label": "UNZIP",
+  "category": "Misc",
+  "icon": {
+    "name": "FileZIPIcon",
+    "color": "Orange"
+  },
+  "options": [
+    {
+      "meta": {
+        "type": "Value",
+        "allowedKinds": ["FILE"],
+        "validations": {
+          "required": true
+        }
+      },
+      "name": "propertyZipFile",
+      "label": "ZIP file"
+    },
+    {
+      "meta": {
+        "type": "Model",
+        "validations": {
+          "required": true
+        }
+      },
+      "name": "modelTarget",
+      "label": "Model to save the extracted files into"
+    },
+    {
+      "meta": {
+        "allowedKinds": ["FILE"],
+        "type": "Property",
+        "model": "modelTarget",
+        "validations": {
+          "required": true
+        }
+      },
+      "configuration": {
+        "dependsOn": [
+          {
+            "option": "modelTarget",
+            "action": "CLEAR"
+          }
+        ]
+      },
+      "name": "propertyTarget",
+      "label": "Property to save the extracted files into"
+    },
+    {
+      "meta": {
+        "type": "Output",
+        "output": {
+          "type": "Array",
+          "schemaModel": "schemaModel",
+          "dataType": "SCHEMA"
+        },
+        "validations": {
+          "required": true
+        }
+      },
+      "name": "references",
+      "label": "As",
+      "info": "The array of references to the extracted files. Use a Loop step to iterate over the references, and a Create or Update step to save the files in the database."
+    }
+  ],
+  "yields": "NONE"
+}

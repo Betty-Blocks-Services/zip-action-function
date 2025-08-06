@@ -1,35 +1,25 @@
 # ZIP action function
 
-This function ZIP's multiple files from a specified property from a collection. Please note that the output is a temporary URL and the ZIP file itself needs to be stored in a create/update event via the temporary url.
+This function ZIPs multiple files from a specified property from a collection. Please note that the output is a temporary reference that needs to be stored in the database using a create or update event.
 
 ## Configure the function
 
-### Source collection:
+### Collection to read files from:
 
-![](https://raw.githubusercontent.com/Betty-Services/zip-action-function/main/img/source_collection.png)
+A pre-defined collection that contains the files that need to be compressed into a ZIP archive file.
 
-Pre-defined collection which is used as source. This determines which files need to be Zipped.
+### Property to read files from:
 
-### Property (database)name:
-
-![](https://raw.githubusercontent.com/Betty-Services/zip-action-function/main/img/property_name.png)
-
-Speficies the datamodel/collection property by assigning it's database name. For more information regarding the database name please see: https://docs.bettyblocks.com/en/articles/6205331-data-model-standards-best-practices#h_67b4116b90
+The file/image property from the selected collection that contains the files.
 
 ### Model and property to save the file into:
 
-![](https://raw.githubusercontent.com/Betty-Services/zip-action-function/main/img/model_property.png)
+The target model and property where the ZIP file will be stored.
 
-The target model is the model where the file will eventually be saved. The property is the property from the model where the file will be saved.
+### Name of the ZIP file:
 
-### Filename:
-
-![](https://raw.githubusercontent.com/Betty-Services/zip-action-function/main/img/filename.png)
-
-The Filename of the ZIP file
+The name of the ZIP file that will be generated.
 
 ### As:
 
-![As](https://raw.githubusercontent.com/Betty-Services/zip-action-function/main/img/as.png)
-
-The output variable name, which you can be used to save the ZIP file in a update or create step.
+The output variable name that you can use to save the ZIP file using a create or update step.
