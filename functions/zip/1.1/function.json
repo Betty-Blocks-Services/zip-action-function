@@ -1,0 +1,97 @@
+{
+  "description": "ZIP files from a collection",
+  "label": "ZIP",
+  "category": "Misc",
+  "icon": {
+    "name": "FileZIPIcon",
+    "color": "Orange"
+  },
+  "options": [
+    {
+      "name": "collection",
+      "label": "Collection to read files from",
+      "meta": {
+        "type": "Collection",
+        "validations": {
+          "required": true
+        }
+      }
+    },
+    {
+      "meta": {
+        "allowedKinds": ["FILE", "IMAGE"],
+        "type": "Property",
+        "model": "collection",
+        "validations": {
+          "required": true
+        }
+      },
+      "configuration": {
+        "dependsOn": [
+          {
+            "option": "collection",
+            "action": "CLEAR"
+          }
+        ]
+      },
+      "name": "propertySource",
+      "label": "Property to read files from"
+    },
+    {
+      "meta": {
+        "type": "Model",
+        "validations": {
+          "required": true
+        }
+      },
+      "name": "modelTarget",
+      "label": "Model to save file into"
+    },
+    {
+      "meta": {
+        "allowedKinds": ["FILE"],
+        "type": "Property",
+        "model": "modelTarget",
+        "validations": {
+          "required": true
+        }
+      },
+      "configuration": {
+        "dependsOn": [
+          {
+            "option": "modelTarget",
+            "action": "CLEAR"
+          }
+        ]
+      },
+      "name": "propertyTarget",
+      "label": "Property to save file into"
+    },
+    {
+      "name": "fileName",
+      "label": "Name for the ZIP file",
+      "meta": {
+        "type": "Text",
+        "default": "zip",
+        "validations": {
+          "required": true
+        }
+      }
+    },
+    {
+      "meta": {
+        "type": "Output",
+        "output": {
+          "type": "Text"
+        },
+        "validations": {
+          "required": true
+        }
+      },
+      "name": "reference",
+      "label": "As",
+      "info": "The file reference"
+    }
+  ],
+  "yields": "NONE"
+}

@@ -1,16 +1,16 @@
-import JSZip from "jszip";
+import JSZip from 'jszip';
 
 const snakeToCamel = (str) => {
-  str = str.replace(/_[0-9]/g, (m, chr) => "!" + m);
+  str = str.replace(/_[0-9]/g, (m, chr) => '!' + m);
   str = str.replace(/[^a-zA-Z0-9!]+(.)/g, (m, chr) => chr.toUpperCase());
-  return str.replace(/[!]/g, "_");
+  return str.replace(/[!]/g, '_');
 };
 
 const getUniqueFilename = (filename, filenames) => {
   let count = 1;
   let newFilename = filename;
   while (filenames.includes(newFilename)) {
-    const dotIndex = filename.lastIndexOf(".");
+    const dotIndex = filename.lastIndexOf('.');
     if (dotIndex !== -1) {
       newFilename = `${filename.slice(0, dotIndex)}_${count}${filename.slice(
         dotIndex
@@ -57,12 +57,12 @@ const zip = async ({
     jsZip.file(fileName, file);
   });
 
-  const arrayBuffer = await jsZip.generateAsync({ type: "uint8array" });
+  const arrayBuffer = await jsZip.generateAsync({ type: 'uint8array' });
 
   return {
     reference: await storeFile(modelNameTarget, propertyNameTarget, {
-      contentType: "application/zip",
-      extension: "zip",
+      contentType: 'application/zip',
+      extension: 'zip',
       fileName: `${fileName}`,
       fileBuffer: arrayBuffer,
     }),
