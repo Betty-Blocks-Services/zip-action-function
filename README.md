@@ -1,6 +1,8 @@
 # ZIP action function
 
-This function ZIPs multiple files from a specified property from a collection. Please note that the output is a temporary reference that needs to be stored in the database using a Create or Update step.
+This function compresses multiple files from a specified property of a collection into a single ZIP file. 
+> [!IMPORTANT]
+> Please note that <b>the function does not store the generated file in the database</b>. Instead, it returns a temporary file reference that should be saved using a Create or Update step.
 
 <br/>
 
@@ -16,7 +18,7 @@ The file/image property from the selected collection that contains the files.
 
 #### Model and property to save the file into:
 
-The target model and property where the ZIP file will be stored.
+The target model and file property where the ZIP file will be stored. These options are required to generate a file reference that matches the file property used in your Create or Update step, so make sure they align.
 
 #### Name of the ZIP file:
 
@@ -31,7 +33,9 @@ The output variable name that you can use to save the ZIP file using a create or
 
 # UNZIP action function
 
-This function UNZIPs a ZIP file from a specified property. Please note that the output is an array of temporary references that need to be stored in the database using a Loop and Create or Update step.
+This function extracts files from a ZIP file in a specified property. 
+> [!IMPORTANT]
+> Please note that <b>the extracted files are also not stored in the database</b>. The function returns an array of temporary file references, which you can store using a Loop combined with a Create or Update step.
 
 <br/>
 
@@ -43,7 +47,7 @@ The file property in which the ZIP is stored.
 
 #### Model and property to save the extracted files into:
 
-The target model and property where the extracted files will be stored. 
+The target model and property where the extracted files will be stored. These options are required to generate file references that match the file property used in your Create or Update step, so make sure they align. It's not possible to save the extracted files in different properties.
 
 #### As:
 
